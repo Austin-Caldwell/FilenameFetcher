@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FilenameFetcher
 {
-    public partial class Form1 : Form
+    public partial class FilenameFetcherGUI : Form
     {
-        public Form1()
+        public FilenameFetcherGUI()
         {
             InitializeComponent();
         }
