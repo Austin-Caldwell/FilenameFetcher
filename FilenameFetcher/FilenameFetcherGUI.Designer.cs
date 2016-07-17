@@ -99,6 +99,7 @@
             this.comboBoxFileType.Name = "comboBoxFileType";
             this.comboBoxFileType.Size = new System.Drawing.Size(150, 21);
             this.comboBoxFileType.TabIndex = 1;
+            this.comboBoxFileType.SelectedIndexChanged += new System.EventHandler(this.comboBoxFileType_SelectedIndexChanged);
             // 
             // lblFileTypeFilter
             // 
@@ -128,6 +129,7 @@
             this.Name = "FilenameFetcherGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Filename Fetcher v1.0";
+            this.Load += new System.EventHandler(this.FilenameFetcherGUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
