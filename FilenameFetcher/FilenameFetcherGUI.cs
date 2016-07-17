@@ -14,7 +14,7 @@ namespace FilenameFetcher
     public partial class FilenameFetcherGUI : Form
     {
         private List<FileType> fileTypes = new List<FileType>();    // List of supported file types for filtering results
-        private string selectedFileType;    // Specifies file types to limit results from filename fetch
+        private string selectedFileExtension;    // Specifies file types to limit results from filename fetch
 
         public FilenameFetcherGUI()
         {
@@ -33,15 +33,15 @@ namespace FilenameFetcher
         private void FilenameFetcherGUI_Load(object sender, EventArgs e)
         {
             // Bind Data to ComboBox for FileTypes
-            comboBoxFileType.DataSource = fileTypes;
             comboBoxFileType.DisplayMember = "FileTypeName";
             comboBoxFileType.ValueMember = "Extension";
+            comboBoxFileType.DataSource = fileTypes;
 
             // Make FileType ComboBox Read-Only
             comboBoxFileType.DropDownStyle = ComboBoxStyle.DropDownList;
 
             // Set Default File Type
-            selectedFileType = "*.*";       // Set default file type selection to "All Files" (*.*)
+            selectedFileExtension = "*.*";       // Set default file type selection to "All Files" (*.*)
         }
 
         private void BtnListFiles_Click(object sender, EventArgs e)
@@ -53,12 +53,12 @@ namespace FilenameFetcher
                 if (directory == DialogResult.OK)
                 {
                     string directorySelected = folderBrowserDialog1.SelectedPath.ToString();
-                    MessageBox.Show("Selected Directory:\n" + directorySelected + "\n\n Selected file type (extension): " + selectedFileType);
+                    MessageBox.Show("Selected Directory:\n" + directorySelected + "\n\n Selected file type (extension): " + selectedFileExtension);
 
                     // Gather all filenames with the specified "fileType" extension from the specified directory and store them in a string array
                     // Example: http://www.csharp-examples.net/get-files-from-directory/
                     // Example: http://stackoverflow.com/questions/7140081/how-to-get-only-filenames-within-a-directory-using-c -- Thanks to Thomas Levesque
-                    string[] filenames = Directory.GetFileSystemEntries(directorySelected, selectedFileType).Select(path => Path.GetFileNameWithoutExtension(path)).ToArray();
+                    string[] filenames = Directory.GetFileSystemEntries(directorySelected, selectedFileExtension).Select(path => Path.GetFileNameWithoutExtension(path)).ToArray();
 
 
                     // DEBUGGING
@@ -77,7 +77,7 @@ namespace FilenameFetcher
                     }
                     else
                     {
-                        MessageBox.Show("No files with the file type extension " + selectedFileType + " were found!");
+                        MessageBox.Show("No files with the file type extension " + selectedFileExtension + " were found!");
                     }
                     // END DEBUGGING
                 }
@@ -94,7 +94,7 @@ namespace FilenameFetcher
 
         private void comboBoxFileType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedFileType = comboBoxFileType.ValueMember     // BUG 07/16/2016 -- Setting value of "Extension" as the string.
+            selectedFileExtension = comboBoxFileType.SelectedValue.ToString();
         }
     }
 }
