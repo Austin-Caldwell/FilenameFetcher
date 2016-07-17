@@ -33,6 +33,8 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnSaveListAsTextFile = new System.Windows.Forms.Button();
+            this.comboBoxFileType = new System.Windows.Forms.ComboBox();
+            this.lblFileTypeFilter = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ListFilenames
@@ -44,7 +46,7 @@
             this.ListFilenames.FormattingEnabled = true;
             this.ListFilenames.Location = new System.Drawing.Point(300, 0);
             this.ListFilenames.Name = "ListFilenames";
-            this.ListFilenames.Size = new System.Drawing.Size(284, 561);
+            this.ListFilenames.Size = new System.Drawing.Size(284, 414);
             this.ListFilenames.TabIndex = 0;
             // 
             // BtnListFiles
@@ -53,12 +55,26 @@
             this.BtnListFiles.AccessibleName = "Fetch Filenames Button";
             this.BtnListFiles.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnListFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnListFiles.Location = new System.Drawing.Point(76, 300);
+            this.BtnListFiles.Location = new System.Drawing.Point(76, 200);
             this.BtnListFiles.Name = "BtnListFiles";
-            this.BtnListFiles.Size = new System.Drawing.Size(150, 23);
+            this.BtnListFiles.Size = new System.Drawing.Size(150, 60);
             this.BtnListFiles.TabIndex = 1;
-            this.BtnListFiles.Text = "Fetch Filename List";
+            this.BtnListFiles.Text = "Fetch Filename List from Directory (Folder)";
             this.BtnListFiles.UseVisualStyleBackColor = true;
+            this.BtnListFiles.Click += new System.EventHandler(this.BtnListFiles_Click);
+            // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.Description = "Select a directory (folder) from which to fetch filenames.";
+            this.folderBrowserDialog1.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            this.folderBrowserDialog1.ShowNewFolderButton = false;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.CheckFileExists = true;
+            this.saveFileDialog1.DefaultExt = "txt";
+            this.saveFileDialog1.Filter = "Text files (*.txt)|*.txt";
+            this.saveFileDialog1.Title = "Save Filename List as Text Document";
             // 
             // btnSaveListAsTextFile
             // 
@@ -66,12 +82,35 @@
             this.btnSaveListAsTextFile.AccessibleName = "Save List As Text Document";
             this.btnSaveListAsTextFile.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSaveListAsTextFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveListAsTextFile.Location = new System.Drawing.Point(76, 372);
+            this.btnSaveListAsTextFile.Location = new System.Drawing.Point(76, 342);
             this.btnSaveListAsTextFile.Name = "btnSaveListAsTextFile";
-            this.btnSaveListAsTextFile.Size = new System.Drawing.Size(150, 45);
+            this.btnSaveListAsTextFile.Size = new System.Drawing.Size(150, 60);
             this.btnSaveListAsTextFile.TabIndex = 2;
             this.btnSaveListAsTextFile.Text = "Save List as .txt Document";
             this.btnSaveListAsTextFile.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxFileType
+            // 
+            this.comboBoxFileType.AccessibleDescription = "Select a file type by which to filter results.";
+            this.comboBoxFileType.AccessibleName = "File Type Selector";
+            this.comboBoxFileType.AccessibleRole = System.Windows.Forms.AccessibleRole.ComboBox;
+            this.comboBoxFileType.FormattingEnabled = true;
+            this.comboBoxFileType.Location = new System.Drawing.Point(76, 51);
+            this.comboBoxFileType.Name = "comboBoxFileType";
+            this.comboBoxFileType.Size = new System.Drawing.Size(150, 21);
+            this.comboBoxFileType.TabIndex = 1;
+            // 
+            // lblFileTypeFilter
+            // 
+            this.lblFileTypeFilter.AccessibleDescription = "Select a file type by which to filter results.";
+            this.lblFileTypeFilter.AccessibleName = "File Type Filter Label";
+            this.lblFileTypeFilter.AutoSize = true;
+            this.lblFileTypeFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFileTypeFilter.Location = new System.Drawing.Point(76, 32);
+            this.lblFileTypeFilter.Name = "lblFileTypeFilter";
+            this.lblFileTypeFilter.Size = new System.Drawing.Size(146, 13);
+            this.lblFileTypeFilter.TabIndex = 0;
+            this.lblFileTypeFilter.Text = "Filter results by file type:";
             // 
             // FilenameFetcherGUI
             // 
@@ -80,7 +119,9 @@
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.ClientSize = new System.Drawing.Size(584, 414);
+            this.Controls.Add(this.lblFileTypeFilter);
+            this.Controls.Add(this.comboBoxFileType);
             this.Controls.Add(this.btnSaveListAsTextFile);
             this.Controls.Add(this.BtnListFiles);
             this.Controls.Add(this.ListFilenames);
@@ -88,6 +129,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Filename Fetcher v1.0";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -98,6 +140,8 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnSaveListAsTextFile;
+        private System.Windows.Forms.ComboBox comboBoxFileType;
+        private System.Windows.Forms.Label lblFileTypeFilter;
     }
 }
 
