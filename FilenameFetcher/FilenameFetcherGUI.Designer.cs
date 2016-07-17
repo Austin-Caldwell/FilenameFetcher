@@ -86,7 +86,7 @@
             this.btnSaveListAsTextFile.Name = "btnSaveListAsTextFile";
             this.btnSaveListAsTextFile.Size = new System.Drawing.Size(150, 60);
             this.btnSaveListAsTextFile.TabIndex = 2;
-            this.btnSaveListAsTextFile.Text = "Save List as .txt Document";
+            this.btnSaveListAsTextFile.Text = "Save Filename List as Text Document";
             this.btnSaveListAsTextFile.UseVisualStyleBackColor = true;
             // 
             // comboBoxFileType

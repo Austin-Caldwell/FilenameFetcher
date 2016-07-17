@@ -24,15 +24,28 @@ namespace FilenameFetcher
         {
             try
             {
-                DialogResult directorySelected = folderBrowserDialog1.ShowDialog();     // Allow the user to specify a directory from which to "fetch" filenames
+                DialogResult directory = folderBrowserDialog1.ShowDialog();     // Allow the user to specify a directory from which to "fetch" filenames
 
-                if (directorySelected == DialogResult.OK)
+                if (directory == DialogResult.OK)
                 {
-                    MessageBox.Show("Selected Directory:\n" + folderBrowserDialog1.SelectedPath.ToString());
+                    string directorySelected = folderBrowserDialog1.SelectedPath.ToString();
+                    MessageBox.Show("Selected Directory:\n" + directorySelected);
 
                     // Gather all filenames with the specified "fileType" extension from the specified directory and store them in a string array
                     // Example: http://www.csharp-examples.net/get-files-from-directory/
-                    string[] filenames = Directory.GetFileSystemEntries(directorySelected.ToString(), fileType);
+                    // Example: http://stackoverflow.com/questions/7140081/how-to-get-only-filenames-within-a-directory-using-c -- Thanks to Thomas Levesque
+                    string[] filenames = Directory.GetFileSystemEntries(directorySelected, fileType).Select(path => Path.GetFileNameWithoutExtension(path)).ToArray();
+
+
+                    // DEBUGGING
+                    string allFileNames = "";
+                    foreach(string s in filenames)
+                    {
+                        allFileNames += s;
+                        allFileNames += "\n";
+                    }
+                    MessageBox.Show(allFileNames);
+                    // END DEBUGGING
                 }
                 else
                 {
