@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ListFilenames = new System.Windows.Forms.ListBox();
+            this.listFilenames = new System.Windows.Forms.ListBox();
             this.BtnListFiles = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -37,17 +37,17 @@
             this.lblFileTypeFilter = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // ListFilenames
+            // listFilenames
             // 
-            this.ListFilenames.AccessibleDescription = "List of filenames";
-            this.ListFilenames.AccessibleName = "Filename List";
-            this.ListFilenames.AccessibleRole = System.Windows.Forms.AccessibleRole.List;
-            this.ListFilenames.Dock = System.Windows.Forms.DockStyle.Right;
-            this.ListFilenames.FormattingEnabled = true;
-            this.ListFilenames.Location = new System.Drawing.Point(300, 0);
-            this.ListFilenames.Name = "ListFilenames";
-            this.ListFilenames.Size = new System.Drawing.Size(284, 414);
-            this.ListFilenames.TabIndex = 0;
+            this.listFilenames.AccessibleDescription = "List of filenames";
+            this.listFilenames.AccessibleName = "Filename List";
+            this.listFilenames.AccessibleRole = System.Windows.Forms.AccessibleRole.List;
+            this.listFilenames.Dock = System.Windows.Forms.DockStyle.Right;
+            this.listFilenames.FormattingEnabled = true;
+            this.listFilenames.Location = new System.Drawing.Point(300, 0);
+            this.listFilenames.Name = "listFilenames";
+            this.listFilenames.Size = new System.Drawing.Size(284, 414);
+            this.listFilenames.TabIndex = 0;
             // 
             // BtnListFiles
             // 
@@ -125,7 +125,7 @@
             this.Controls.Add(this.comboBoxFileType);
             this.Controls.Add(this.btnSaveListAsTextFile);
             this.Controls.Add(this.BtnListFiles);
-            this.Controls.Add(this.ListFilenames);
+            this.Controls.Add(this.listFilenames);
             this.Name = "FilenameFetcherGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Filename Fetcher v1.0";
@@ -137,7 +137,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox ListFilenames;
+        private System.Windows.Forms.ListBox listFilenames;
         private System.Windows.Forms.Button BtnListFiles;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;

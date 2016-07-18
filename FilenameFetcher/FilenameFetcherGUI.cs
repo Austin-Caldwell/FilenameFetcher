@@ -58,28 +58,39 @@ namespace FilenameFetcher
                     // Gather all filenames with the specified "fileType" extension from the specified directory and store them in a string array
                     // Example: http://www.csharp-examples.net/get-files-from-directory/
                     // Example: http://stackoverflow.com/questions/7140081/how-to-get-only-filenames-within-a-directory-using-c -- Thanks to Thomas Levesque
-                    string[] filenames = Directory.GetFileSystemEntries(directorySelected, selectedFileExtension).Select(path => Path.GetFileNameWithoutExtension(path)).ToArray();
+                    List<string> filenames = Directory.GetFileSystemEntries(directorySelected, selectedFileExtension).Select(path => Path.GetFileNameWithoutExtension(path)).ToList<string>();
 
+                    //// EXPERIMENTING WITH REMOVING HIDDEN FILES FROM RESULTS - 07/17/2016
+                    //DirectoryInfo directoryFiles = new DirectoryInfo(directorySelected);
+                    //var files = directoryFiles.GetFiles(selectedFileExtension);
 
-                    // DEBUGGING
-                    string allFileNames = "";
-                    foreach(string s in filenames)
+                    //foreach (var file in files)
+                    //{
+                    //    if (file.Attributes.Equals("Hidden, System"))
+                    //    {
+                    //        // Do not include file in list, as it is a HIDDEN file
+                    //    }
+                    //}
+                    //// END EXPERIMENTING
+
+                    // Remove Hidden System Files from the list of results.
+                    foreach (string filename in filenames)
                     {
-                        if (s != "")
+                        if (filename.EndsWith(".ini"))
                         {
-                            allFileNames += s;
-                            allFileNames += "\n";
+                            filenames.Remove(filename);
                         }
                     }
-                    if (allFileNames != "")
-                    {
-                        MessageBox.Show(allFileNames);
-                    }
-                    else
+
+                    // If the list of filenames is empty (no matching files found), notify the user that no results were found.
+                    if (filenames.Count == 0)
                     {
                         MessageBox.Show("No files with the file type extension " + selectedFileExtension + " were found!");
                     }
-                    // END DEBUGGING
+
+                    // Fill the listBox with filename results and refresh the listBox display just to be sure the correct data is shown.
+                    listFilenames.DataSource = filenames;
+                    listFilenames.Refresh();
                 }
                 else
                 {
