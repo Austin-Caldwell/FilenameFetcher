@@ -37,6 +37,7 @@
             this.lblListSelectionInstructions = new System.Windows.Forms.Label();
             this.checkBoxSelectAllFilenames = new System.Windows.Forms.CheckBox();
             this.btnSaveListAsTextFile = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // listFilenames
@@ -57,8 +58,8 @@
             this.BtnListFiles.AccessibleDescription = "Click to fetch filenames from given Windows directory.";
             this.BtnListFiles.AccessibleName = "Fetch Filenames Button";
             this.BtnListFiles.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnListFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnListFiles.Location = new System.Drawing.Point(76, 173);
+            this.BtnListFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnListFiles.Location = new System.Drawing.Point(76, 152);
             this.BtnListFiles.Name = "BtnListFiles";
             this.BtnListFiles.Size = new System.Drawing.Size(150, 60);
             this.BtnListFiles.TabIndex = 2;
@@ -76,7 +77,9 @@
             // 
             this.saveFileDialog1.CheckFileExists = true;
             this.saveFileDialog1.DefaultExt = "txt";
+            this.saveFileDialog1.FileName = "FilenameList";
             this.saveFileDialog1.Filter = "Text files (*.txt)|*.txt";
+            this.saveFileDialog1.InitialDirectory = "C:\\";
             this.saveFileDialog1.Title = "Save Filename List as Text Document";
             // 
             // comboBoxFileType
@@ -96,31 +99,31 @@
             this.lblFileTypeFilter.AccessibleDescription = "Select a file type by which to filter results.";
             this.lblFileTypeFilter.AccessibleName = "File Type Filter Label";
             this.lblFileTypeFilter.AutoSize = true;
-            this.lblFileTypeFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFileTypeFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFileTypeFilter.Location = new System.Drawing.Point(76, 32);
             this.lblFileTypeFilter.Name = "lblFileTypeFilter";
-            this.lblFileTypeFilter.Size = new System.Drawing.Size(146, 13);
+            this.lblFileTypeFilter.Size = new System.Drawing.Size(149, 16);
             this.lblFileTypeFilter.TabIndex = 0;
             this.lblFileTypeFilter.Text = "Filter results by file type:";
             // 
             // lblListSelectionInstructions
             // 
             this.lblListSelectionInstructions.AutoSize = true;
-            this.lblListSelectionInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblListSelectionInstructions.Location = new System.Drawing.Point(33, 257);
+            this.lblListSelectionInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListSelectionInstructions.Location = new System.Drawing.Point(43, 238);
             this.lblListSelectionInstructions.Name = "lblListSelectionInstructions";
-            this.lblListSelectionInstructions.Size = new System.Drawing.Size(261, 39);
+            this.lblListSelectionInstructions.Size = new System.Drawing.Size(228, 48);
             this.lblListSelectionInstructions.TabIndex = 4;
-            this.lblListSelectionInstructions.Text = "NOTE: You must select at least one filename\r\nfrom the list of filenames fetched\r\n" +
-    "before you can save to a text file.";
+            this.lblListSelectionInstructions.Text = "You must select at least one filename\r\nfrom the list of filenames fetched\r\nbefore" +
+    " you can save to a text file.";
             // 
             // checkBoxSelectAllFilenames
             // 
             this.checkBoxSelectAllFilenames.AutoSize = true;
-            this.checkBoxSelectAllFilenames.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSelectAllFilenames.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxSelectAllFilenames.Location = new System.Drawing.Point(76, 319);
             this.checkBoxSelectAllFilenames.Name = "checkBoxSelectAllFilenames";
-            this.checkBoxSelectAllFilenames.Size = new System.Drawing.Size(136, 17);
+            this.checkBoxSelectAllFilenames.Size = new System.Drawing.Size(143, 20);
             this.checkBoxSelectAllFilenames.TabIndex = 5;
             this.checkBoxSelectAllFilenames.Text = "Select all filenames";
             this.checkBoxSelectAllFilenames.UseVisualStyleBackColor = true;
@@ -131,7 +134,7 @@
             this.btnSaveListAsTextFile.AccessibleDescription = "Save the list of filenames as a text document.";
             this.btnSaveListAsTextFile.AccessibleName = "Save List As Text Document";
             this.btnSaveListAsTextFile.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSaveListAsTextFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveListAsTextFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveListAsTextFile.Location = new System.Drawing.Point(76, 342);
             this.btnSaveListAsTextFile.Name = "btnSaveListAsTextFile";
             this.btnSaveListAsTextFile.Size = new System.Drawing.Size(150, 60);
@@ -139,6 +142,14 @@
             this.btnSaveListAsTextFile.Text = "Save Filename List as Text Document";
             this.btnSaveListAsTextFile.UseVisualStyleBackColor = true;
             this.btnSaveListAsTextFile.Click += new System.EventHandler(this.btnSaveListAsTextFile_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "txt";
+            this.openFileDialog1.FileName = "FilenameList";
+            this.openFileDialog1.Filter = "Text files (*.txt)|*.txt";
+            this.openFileDialog1.InitialDirectory = "C:\\";
+            this.openFileDialog1.Title = "Save Filename List as Text Document";
             // 
             // FilenameFetcherGUI
             // 
@@ -175,6 +186,7 @@
         private System.Windows.Forms.Label lblListSelectionInstructions;
         private System.Windows.Forms.CheckBox checkBoxSelectAllFilenames;
         private System.Windows.Forms.Button btnSaveListAsTextFile;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

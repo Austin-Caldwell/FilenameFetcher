@@ -59,9 +59,7 @@ namespace FilenameFetcher
         {
             try
             {
-                DialogResult directory = folderBrowserDialog1.ShowDialog();     // Allow the user to specify a directory from which to "fetch" filenames
-
-                if (directory == DialogResult.OK)
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)       // Allow the user to specify a directory from which to "fetch" filenames
                 {
                     string directorySelected = folderBrowserDialog1.SelectedPath.ToString();
                     MessageBox.Show("Selected Directory:\n" + directorySelected + "\n\n Selected file type (extension): " + selectedFileExtension);
@@ -129,8 +127,16 @@ namespace FilenameFetcher
                 
                 try
                 {
-                    // Perform the actual writing of filenames to a text document.
-                    File.WriteAllLines(@"C:\WriteLines.txt", filenamesForSaveToFile);
+                    // 07/17/2016 -- NEED TO IMPLEMENT WAY TO CREATE A NEW .txt FILE FROM DIALOG USING saveFileDialog1 OR openFileDialog1
+                    if (openFileDialog1.ShowDialog() == DialogResult.OK && openFileDialog1.FileName != "")
+                    {
+                        // Perform the actual writing of filenames to a text document.
+                        File.WriteAllLines(openFileDialog1.FileName, filenamesForSaveToFile);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable To Save Filename List to Selected Directory");
+                    }
                 }
                 catch (Exception ex)
                 {
